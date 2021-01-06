@@ -1,40 +1,45 @@
 <?php
 
-    class Sql extends PDO{
+    #Esta class tem o Objetivo de fazer a conexão com o banco e realizar todas as SQL que retornam valores de uma busca especifica
+
+    class Sql {
+
         private $conn;
 
-        public function __construct(){
-            $host = "localhost";
-            $user = "root";
-            $pass = "";
-            $db = "cdaut";
+        public function __construct(){ #Fazer a Conexão instantaneamente
+            $host = "sql105.epizy.com";
+            $user = "epiz_27027660";
+            $pass = "6NSZN2PLXoKv";
+            $db = "epiz_27027660_cdaut";
 
-            $this->conn = new PDO("mysql:host=$host;dbname=$db",$user,$pass);
+            $this->conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
         }
 
-        public function toquery($sqlExecut, $param = array()){
-            $stmt = $this->conn->prepare($sqlExecut);
-            $this->setParams($stmt, $param);
+        public function query($sql, $params = array()){#Receber a query, os parametros e iniciar o processo
+            $stmt = $this->conn->prepare($sql);
+            $this->setParam($stmt, $params);
             $stmt->execute();
-            return $stmt;
+
+            return $this->toArray($stmt);
         }
 
-        public function setParams($statement, $params = array()){
-            echo "entro no set params";
-            foreach ($params as $paramSql => $paramToSql){
-                $this->setParam($statement, $paramSql, $paramToSql);
+        public function setParam($statemant, $param){ #Setar os parametros da Query
+            foreach($param as $paramSql => $paramToSql){
+                $this->setParams($statemant, $paramSql, $paramToSql);
+            } 
+        }
+
+        public function setParams($statemant, $paramSql, $paramToSql){ #Setar os parametros da Query
+            $statemant->bindParam($paramSql, $paramToSql);
+        }
+
+        public function toArray($statemant){ #Converter o resultado para um Array simples
+            $results = $statemant->fetchALL(PDO::FETCH_ASSOC);
+            $dados = array();
+
+            foreach($results[0] as $key => $value){
+                array_push($dados, $value);
             }
-        }
-
-        public function setParam($statement, $paramSql, $paramToSql){
-            echo "entro no set param";
-            $statement->bindParam($paramSql, $paramToSql);
-        }
-
-        public function mostrar(){
-            $cone = $this->conn->prepare("SELECT * FROM novembro WHERE cod = 6962");
-            $dados = $cone->execute();
+            return $dados;
         }
     }
-
-    $teste = new Sql();

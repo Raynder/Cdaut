@@ -1,14 +1,12 @@
 <?php
 require_once "config.php";
+$buscas = new Buscas(); //A variavel tem que estão fora do escoplo dos If´s para funcionar em ambos os metodos.
 
 if (isset($_POST['cnome']) || isset($_POST['cod'])){
     if(!empty($_POST['cnome'])){
         $cnome = $_POST['cnome'];
-        
-        $sql = "SELECT * FROM dados WHERE cnome = '$cnome'";
-        $dados = $mysqli->query($sql) or die ($mysqli->error);
-        $dado = $dados->fetch_array();
-        
+        $dado = $buscas->byName($cnome);
+    
         echo("<script>document.getElementById('cons').style.display='block';</script>");
         echo("<script>document.getElementById('cnome').value ='';</script>");
     }
@@ -16,44 +14,13 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
         if (isset($_POST['cod'])){
             if ($_POST['cod'] > 0){
                 $cod = $_POST['cod'];
+                $dado = $buscas->byCod($cod);
 
-                $sql = "SELECT * FROM dados WHERE cod = '$cod'";
-                $dados = $mysqli->query($sql) or die ($mysqli->error);
-                $dado = $dados->fetch_array();
                 echo("<script>document.getElementById('cons').style.display='block';</script>");
-
             }
         }
     }
 }
-
-
-if(isset($_POST['cnome']) || isset($_POST['cod'])){
-
-    $cod = $dado['cod'];
-    $nome = $dado['nome'];
-    $cpf = $dado['cpf'];
-    $ci = $dado['nid'];
-    $rua = $dado['rua'];
-    $bairro = $dado['bairro'];
-    $cidade = $dado['cidade'];
-    $estado = $dado['estado'];
-    $cep = $dado['cep'];
-    $tel = $dado['tel'];
-    $cel = $dado['cel'];
-    $matricula = $dado['matricula'];
-    $pis = $dado['pis'];
-    $processo = $dado['processo'];
-    $empenho = $dado['empenho'];
-    $saldo = $dado['saldo'];
-    $stinss = $dado['stinss'];
-    $vlinss = $dado['vlinss'];
-    $stiss = $dado['stiss'];
-    $lotacao = $dado['lotacao'];
-    $contrato = $dado['contrato'];
-}
-
-
 ?>
 
 <!DOCTYPE html>
@@ -74,37 +41,37 @@ if(isset($_POST['cnome']) || isset($_POST['cod'])){
 <form method="post" action="" name"form" id="formu">
     <div id="cons">
 
-        <input type="text" class="cod l" id="cod" name="cod" value="<?php echo $cod;?>">
+        <input type="text" class="cod l" id="cod" name="cod" value="<?php echo $dado[0];?>">
         <input type="text" class="cnome" id="cnome" name="cnome" onclick="rt()">
 
-        <input type="text" class="info1 l" id="nome" value="<?php echo $nome;?>">
-        <input type="text" class="info1 l" id="rua"  value="<?php echo $rua;?>">
-        <input type="text" class="info2 l" id="bairro" value="<?php echo $bairro;?>">
-        <input type="text" class="cep" id="cep" value="<?php echo $cep;?>">
-        <input type="text" class="info2 l" id="cidade" value="<?php echo $cidade;?>">
-        <input type="text" class="estado" id="estado" value="<?php echo $estado;?>">
-        <input type="text" class="l w102" id="cpf" value="<?php echo $cpf;?>">
-        <input type="text" class="info3" id="ci" value="<?php echo $ci;?>">
-        <input type="text" class="info3 l" id="cel" value="<?php echo $cel;?>">
-        <input type="text" class="info3" id="pis" value="<?php echo $pis;?>">
+        <input type="text" class="info1 l" id="nome" value="<?php echo $dado[1];?>">
+        <input type="text" class="info1 l" id="rua"  value="<?php echo $dado[4];?>">
+        <input type="text" class="info2 l" id="bairro" value="<?php echo $dado[5];?>">
+        <input type="text" class="cep" id="cep" value="<?php echo $dado[8];?>">
+        <input type="text" class="info2 l" id="cidade" value="<?php echo $dado[6];?>">
+        <input type="text" class="estado" id="estado" value="<?php echo $dado[7];?>">
+        <input type="text" class="l w102" id="cpf" value="<?php echo $dado[2];?>">
+        <input type="text" class="info3" id="ci" value="<?php echo $dado[3];?>">
+        <input type="text" class="info3 l" id="cel" value="<?php echo $dado[10];?>">
+        <input type="text" class="info3" id="pis" value="<?php echo $dado[12];?>">
         <input type="text" class="l" id="cbo" value="<?php ?>">
-        <input type="text" class="lot" id="lot" value="<?php echo $lotacao;?>">
-        <input type="text" class="l w102" id="processo" value="<?php echo $processo;?>">
-        <input type="text" class="info3" id="empenho" value="<?php echo $empenho;?>">
-        <input type="text" class="l w102" id="saldo" value="<?php echo $saldo;?>">
-        <input type="text" class="i" id="inss" value="<?php if ($stinss == ''){
+        <input type="text" class="lot" id="lot" value="<?php echo $dado[19];?>">
+        <input type="text" class="l w102" id="processo" value="<?php echo $dado[13];?>">
+        <input type="text" class="info3" id="empenho" value="<?php echo $dado[14];?>">
+        <input type="text" class="l w102" id="saldo" value="<?php echo $dado[15];?>">
+        <input type="text" class="i" id="inss" value="<?php if ($dado[16] == ''){
             echo "";
         }
-        elseif ($stinss == 1){
+        elseif ($dado[16] == 1){
          echo "contribuinte";
         }
         else{
             echo "isento";
         }?>">
-        <input type="text" class="i" id="iss" value="<?php if ($stiss == ''){
+        <input type="text" class="i" id="iss" value="<?php if ($dado[18] == ''){
             echo "";
         }
-        elseif ($stiss == 1){
+        elseif ($dado[18] == 1){
          echo "contribuinte";
         }
         else{
