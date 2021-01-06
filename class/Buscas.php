@@ -7,6 +7,13 @@
 
         public function __construct(){
             $this->conn = new Sql();
+            return $this->conn;
+        }
+
+        public function byName2($cnome){
+            $sql = "SELECT cnome FROM dados WHERE cnome LIKE :CNOME ORDER BY cnome ASC LIMIT 5";
+            $param = array(":CNOME"=>"%".$cnome."%");
+            return $this->conn->byLike($sql, $param);
         }
 
         public function byName($cnome){

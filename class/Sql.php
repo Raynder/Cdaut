@@ -21,6 +21,20 @@
             
             $this->conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
         }
+        public function byLike($sql, $params = array()){
+            $stmt = $this->conn->prepare($sql);
+            $this->setParam($stmt, $params);
+            $stmt->execute();
+            $res = $stmt->fetchALL(PDO::FETCH_ASSOC);
+            $dados = array();
+
+            foreach($res as $key => $value){
+                foreach($value as $key => $val){
+                    array_push($dados, $val);
+                }
+            }
+            return $dados;
+        }
 
         public function query($sql, $params = array()){#Receber a query, os parametros e iniciar o processo
             $stmt = $this->conn->prepare($sql);
