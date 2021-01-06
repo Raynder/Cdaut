@@ -38,5 +38,3 @@
     }
 
     $teste = new Sql();
-
-    $teste->mostrar();
