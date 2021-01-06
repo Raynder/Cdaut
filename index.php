@@ -1,6 +1,12 @@
 <?php
+ini_set( 'display_errors', 0 ); //Só usei isso, pois o array dados tem 22 posiçoes e usaria muita memoria pra fizer um try/catch para cada
 require_once "config.php";
 $buscas = new Buscas(); //A variavel tem que estão fora do escoplo dos If´s para funcionar em ambos os metodos.
+
+while($con < $cont){
+    $dado[$con] = " ";
+    $con++;
+}
 
 if (isset($_POST['cnome']) || isset($_POST['cod'])){
     if(!empty($_POST['cnome'])){
@@ -38,7 +44,7 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
 <body>
 
 <input type="button" value="" class="cons hidden" onclick="mostrar()">
-<form method="post" action="" name"form" id="formu">
+<form method="post" action="" name="form" id="formu">
     <div id="cons">
 
         <input type="text" class="cod l" id="cod" name="cod" value="<?php echo $dado[0];?>">

@@ -7,11 +7,18 @@
         private $conn;
 
         public function __construct(){ #Fazer a Conexão instantaneamente
+            /* EPIZY
             $host = "sql105.epizy.com";
             $user = "epiz_27027660";
             $pass = "6NSZN2PLXoKv";
             $db = "epiz_27027660_cdaut";
-
+            */
+            /* LOCALHOST*/
+            $host = "localhost";
+            $user = "root";
+            $pass = "";
+            $db = "cdaut";
+            
             $this->conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
         }
 
@@ -25,12 +32,8 @@
 
         public function setParam($statemant, $param){ #Setar os parametros da Query
             foreach($param as $paramSql => $paramToSql){
-                $this->setParams($statemant, $paramSql, $paramToSql);
+                $statemant->bindParam($paramSql, $paramToSql);
             } 
-        }
-
-        public function setParams($statemant, $paramSql, $paramToSql){ #Setar os parametros da Query
-            $statemant->bindParam($paramSql, $paramToSql);
         }
 
         public function toArray($statemant){ #Converter o resultado para um Array simples
