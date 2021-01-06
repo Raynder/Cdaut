@@ -12,7 +12,7 @@
 
         public function byName2($cnome){
             $sql = "SELECT cnome FROM dados WHERE cnome LIKE :CNOME ORDER BY cnome ASC LIMIT 5";
-            $param = array(":CNOME"=>"%".$cnome."%");
+            $param = array(":CNOME"=>$cnome."%");
             return $this->conn->byLike($sql, $param);
         }
 

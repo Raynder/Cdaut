@@ -66,7 +66,7 @@ if(isset($_GET['nome'])){
 
     $cpf = insertInPosition($cpf, 3, '.');
 
-    $inss = $buscas->searchInss($cod)
+    $inss = $buscas->searchInss($cod, $mes);
 
     $valor = explode(",", $inss);
     $real = $valor[0];
