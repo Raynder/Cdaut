@@ -34,7 +34,3 @@
             return $this->conn->query($sql, $params);
         }
     }
-/*
-    $tes = new Buscas();
-    $res = $tes->searchInss(8974, "dezembro");
-    print_r($res);*/
