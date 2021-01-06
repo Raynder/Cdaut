@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url("../img/fundo.png");
+}
+#cons{
+    display: none;
+    width: 400px;
+    height: 800px;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+}
+.cons{
+    width: 24px;
+    height: 24px;
+    top: 25px;
+}
+.hidden{
+    background-color: rgba(255, 255, 255, 0.01);
+    position: absolute;
+}
+.hidd{
+    display: none;
+}
+#cons input{
+    position: absolute;
+}
+.l{
+    left: 75px;
+}
+.cod{
+    top: 41px;
+    width: 39px;
+}
+.cnome{
+    width: 363px;
+    top: 41px;
+    left: 124px;
+}
+#nome{
+    width: 413px;
+    top: 73px;
+}
+#rua{
+    top: 105px;
+}
+#bairro{
+    top: 137px;
+}
+#cidade{
+    top: 169px;
+}
+.cep{
+    width: 77px;
+    left: 411px;
+    top: 137px;
+}
+.estado{
+    width: 46px;
+    top: 169px;
+    left: 411px;
+}
+.w102{
+    width: 102px;
+}
+#cpf{
+    top: 201px;
+}
+#ci{
+    top: 201px;
+}
+#cel{
+    top: 233px;
+}
+#pis{
+    top: 265px;
+}
+#cbo{
+    top: 297px;
+    width: 179px;
+}
+#processo, #empenho{
+    top: 329px;
+}
+#saldo, #inss{
+    top: 361px;
+}
+#iss{
+    top: 393px;
+}
+.lot{
+    width: 120px;
+    top: 297px;
+    left: 371px;
+}
+.info1{
+    width: 415px;
+}
+.info2{
+    width: 278px;
+}
+.info3{
+    width: 102px;
+    left: 291px;
+}
+.i{
+    left: 291px;
+    width: 94px;
+}
+/* BOTOES DO FIM
+ */
+
+.fin{
+    top: 426px;
+    width: 51px;
+}
+.grav{
+    left: 260px;
+}
+.excl{
+    left: 320px;
+}
+.limp{
+    left: 380px;
+}
+.conf {
+    left: 100px;
+    width: 70px;
+    box-shadow: 1px 1px 0px black;
+}
+
