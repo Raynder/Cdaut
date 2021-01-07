@@ -2,7 +2,7 @@
 
     #Esta class tem o Objetivo de fazer a conexão com o banco e realizar todas as SQL que retornam valores de uma busca especifica
 
-    class Sql {
+    class Sql extends PDO{
 
         private $conn;
 

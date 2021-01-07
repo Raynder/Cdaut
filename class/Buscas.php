@@ -1,5 +1,5 @@
 <?php
-    require_once "Sql.php"; //Isso só é necessário quando os testes serão feitos dentro de alguma class
+    //require_once "Sql.php"; //Isso só é necessário quando os testes serão feitos dentro de alguma class
 
     class Buscas{
 
@@ -7,7 +7,6 @@
 
         public function __construct(){
             $this->conn = new Sql();
-            return $this->conn;
         }
 
         public function byName2($cnome){
@@ -28,9 +27,14 @@
             return $this->conn->query($sql, $params);
         }
 
-        public function searchInss($cod, $mes){
-            $sql = "SELECT inss FROM :MES WHERE cod = :COD";
-            $params = array(":COD"=>$cod,":MES"=>$mes);
-            return $this->conn->query($sql, $params);
+        //Esta função proucara qualquer valor especifico retornando um resultado
+        public function searchEspec($value, $location, $paramName, $param){
+            $sql = "SELECT $value FROM $location WHERE $paramName = :VAL";
+            $params = array(":VAL"=>$param);
+            return $this->conn->query($sql, $params)[0]; //O valor vem como array com apenas uma posição, então pegamos essa posição.
+        }
+
+        public function convert($array = array()){
+            return $this->conn->convert($array);
         }
     }

@@ -66,22 +66,12 @@ if(isset($_GET['nome'])){
 
     $cpf = insertInPosition($cpf, 3, '.');
 
-    $inss = $buscas->searchInss($cod, $mes);
+    $inss = $buscas->searchEspec("inss", $nomemes, "cod", $cod);
 
     $valor = explode(",", $inss);
-    $real = $valor[0];
-    $cent = $valor[1];
 
-    $sql = "SELECT nome FROM tablereal WHERE valor = '$real'";
-    $dados = $mysqli->query($sql) or die ($mysqli->error);
-    $dado = $dados->fetch_array();
-    $realnome = $dado['nome'];
-
-    $sql = "SELECT nome FROM tablecentavos WHERE valor = '$cent'";
-    $dados2 = $mysqli->query($sql) or die ($mysqli->error);
-    $dado2 = $dados2->fetch_array();
-    $centnome = $dado2['nome'];
-
+    $realnome = $buscas->searchEspec("nome", "tablereal","valor", $valor[0]);
+    $centnome = $buscas->searchEspec("nome", "tablecentavos","valor", $valor[1]);
 }
 ?>
 <!DOCTYPE html>
