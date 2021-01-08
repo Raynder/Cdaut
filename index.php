@@ -117,19 +117,35 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
                 });
             });
             function abrirGerar(){
+                var cont = 2;
                 var te = document.getElementById('complet');
+                var te2 = document.getElementById('dec');
+                var te3 = document.getElementById('mes');
                 var wpx = 50;
-                var hpx = 50;
+                var hpx = 20;
 
                 te.style.display = 'block';
 
                 setInterval(function (){
                     if(wpx < 300){
                         te.style.width = wpx+'px';
-                        te.style.height = wpx+'px';
+                        te.style.height = hpx+'px';
+
+                        if(cont < 21){
+                            te3.style.fontSize = cont+'px';
+                            te2.style.fontSize = cont+'px';
+                        }
                         wpx += 20;
+                        hpx += 7;
+                        if(cont > 9)
+                            cont += 1;
+                        if(cont > 11)
+                            cont += 2;
+                        else
+                            cont += 1;
+
                     }
-                }, 8);    
+                }, 15);    
                 
             }
             function criardoc(){
@@ -159,7 +175,7 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
 
         <style>
             .gerarinp {
-                font-size: 20px;
+                font-size: 2px;
                 text-align: center;
                 font-family: fangsong;
                 border-radius: 20px;
@@ -205,7 +221,7 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
                 <input type="text" name="nome" style="display: none;" value="<?php echo $nome; ?>">
                 
                 
-                <input name="mes" type="text" maxlength="20" id="mes" tabindex="2" class="gerarinp" placeholder="Informe o Mes" class="inpmes">
+                <input name="mes" type="text" maxlength="20" id="mes" tabindex="2" class="gerarinp" placeholder="Informe o Mes">
                     </span></div>
                     
                     <input class="btnGerar" onclick="criardoc()" type="button" name="wt10$wtMainContent$wt23" value="GERAR" id="wt10_wtMainContent_wt23" tabindex="3"  style="margin-left: 0px;background-color: #019CE5; color: #fff; transform: translateX(-50%);background-color: #019CE5;color: #fff;margin-left: 50%;position: relative;padding: 7px;border-radius: 20px;   top: 13px;">

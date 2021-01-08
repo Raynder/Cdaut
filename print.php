@@ -210,7 +210,7 @@ if(isset($_GET['nome'])){
     <img src="fundo.png">
 
         <div class="cntLateral">
-        <p>Secretaria Municipal da Saude<br>Superintendencia de Administração e Gestão de Pessoas<br>Diretoria de Gestão de Desenvolvimento de Pessoas<br>Gerencia de Administração e Controle de Pessoal</p>
+        <p><u>Secretaria Municipal da Saude</u><br>Superintendencia de Administração e Gestão de Pessoas<br>Diretoria de Gestão de Desenvolvimento de Pessoas<br>Gerencia de Administração e Controle de Pessoal</p>
 
         </div>
         <p class="titu fon">DECLARAÇÃO</p>
