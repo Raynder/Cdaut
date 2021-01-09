@@ -7,25 +7,28 @@
         private $conn;
 
         public function __construct(){ #Fazer a Conexão instantaneamente
-            /* EPIZY
+            /* EPIZY*/
             $host = "sql105.epizy.com";
             $user = "epiz_27027660";
             $pass = "6NSZN2PLXoKv";
             $db = "epiz_27027660_cdaut";
-            */
-            /* LOCALHOST*/
+            
+            /* LOCALHOST
             $host = "localhost";
             $user = "root";
             $pass = "";
             $db = "cdaut";
-            
+            */
             $this->conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
         }
-        public function byLike($sql, $params = array()){
+        public function relacao($sql, $params = array()){
             $stmt = $this->conn->prepare($sql);
             $this->setParam($stmt, $params);
             $stmt->execute();
             $res = $stmt->fetchALL(PDO::FETCH_ASSOC);
+            return $res;
+        }
+        public function byLike($res = array()){
             $dados = array();
 
             foreach($res as $key => $value){ #Similar ao toArray() porem não se trata de uma matriz e sim de só um objeto

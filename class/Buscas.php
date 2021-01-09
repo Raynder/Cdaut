@@ -12,7 +12,8 @@
         public function byName2($cnome){
             $sql = "SELECT cnome FROM dados WHERE cnome LIKE :CNOME ORDER BY cnome ASC LIMIT 5";
             $param = array(":CNOME"=>$cnome."%");
-            return $this->conn->byLike($sql, $param);
+            $res = $this->conn->relacao($sql, $param);
+            return $this->conn->byLike($res);
         }
 
         public function byName($cnome){
@@ -36,5 +37,32 @@
 
         public function convert($array = array()){
             return $this->conn->convert($array);
+        }
+
+        public function relatorio($cond, $valor){
+            $sql = "SELECT * FROM dados WHERE $cond = :VAL";
+            $params = array(":VAL"=>$valor);
+            return $this->conn->relacao($sql, $params);
+        }
+
+        public function exibir($array = array()){
+            $vez = 0;
+            echo "<table>";
+            foreach($array as $key => $values){
+                if($vez % 2 == 0)
+                    $class = "par";
+                else
+                    $class = "impar";
+                echo "<tr class='$class'>";
+                if($vez == 0)
+                        echo "<td><b>Code</b></td> <td><b>Nome</b></td> <td><b>Lotacao</b></td> </tr> <tr>";
+                foreach($values as $key => $value){
+                    if($key == "cod" || $key == "nome" || $key == "lotacao")
+                        echo "<td>".$value."</td>";
+                }
+                $vez++;
+                echo "</tr>";
+            }
+            echo "</table>";   
         }
     }
