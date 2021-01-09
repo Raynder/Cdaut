@@ -35,17 +35,14 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
     <title>Cdaut</title>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
-
     <link href="front-end/estyle.css" type="text/css" rel="stylesheet">
     <script src="front-end/script.js"></script>
-
-
 </head>
 <body>
 <header>
     <p>
     <a>Cadastros</a>
-    <a>Relatorios</a>
+    <a onclick="gerarRelatorios()">Relatorios</a>
     <a>Configurações</a>
     </p>
 </header>
@@ -176,10 +173,12 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
                 iFrame.style.display = "none";
                 iFrame.src = "print.php?nome="+nome+"&cpf="+cpf+"&cod="+cod+"&dec="+dec+"&mes="+mes;
                 document.body.appendChild(iFrame);
-                }
+            }
                 //Colocar um event para quando clicar no nome equivalente ao solicitado
-                var clic = document.getElementById('ui-id-1');
-                clic.addEventListener('click', rt);
+                /*var clic = document.getElementById('ui-id-1');
+                clic.addEventListener('click', rt);*/
+            
+            
         </script>
 
         <style>
@@ -246,6 +245,34 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
 
 
 </form>
+
+<div class="campoDeFiltros" id="Relatorio">
+    <img src="https://www.freeiconspng.com/uploads/red-closed-icon-5.png" width="20" class="close">
+    <form action="">
+        <h1>Filtro para gerar relatorio</h1>
+        <hr></hr>
+        <p class="pCampo">Dados:
+            <input class="radioDados" type="button" value="Codigo"  id="lab1" onclick="changcolor(this)">
+            <input class="radioDados" type="button" value="Nome" onclick="changcolor(this)">
+            <input class="radioDados" type="button"value="Lotacao" onclick="changcolor(this)">
+            <input class="radioDados" type="button" value="Contrato" onclick="changcolor(this)">
+            </p>    <hr></hr>
+        <p class="pCampo">Filtro:
+            <input class="radioFiltro" type="button" value="Nome" onclick="changcolor(this)">
+            <input class="radioFiltro" type="button"value="Lotacao" onclick="changcolor(this)">
+            <input class="radioFiltro" type="button" value="Mes do Contrato" onclick="changcolor(this)">
+            <input class="radioFiltro" type="button" value="Ano do Contrato" onclick="changcolor(this)">
+        </p>
+        <hr></hr>
+        <p class="pCampo">Condição:
+            <input type="text" class="cond" placeholder="Igual a?">
+        </p>
+        <hr></hr>
+        <input type="submit" value="Enviar" class="gerarRel">
+        <img alt="" class="load" src="img/load.gif">
+            </form>
+
+</div>
     
 <style>
     
@@ -266,6 +293,7 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
         left: 185px;
     }
 </style>
+
 <?php
 if (isset($_POST['cnome'])){
     echo("<script>document.getElementById('cons').style.display='block';</script>");

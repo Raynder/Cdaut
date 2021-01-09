@@ -1,3 +1,10 @@
+function gerarRelatorios(){
+    document.getElementById('cons').style.display = 'none';
+    document.getElementById('Relatorio').style.display = 'block';
+}
+function closeRelatorio(){
+    document.getElementById('Relatorio').style.display = 'none';
+}
 function mostrar(){
     document.getElementById('cons').style.display = 'block';
 }

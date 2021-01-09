@@ -148,4 +148,56 @@ header a {
     width: 70px;
     box-shadow: 1px 1px 0px black;
 }
-
+div#Relatorio {
+    display: block;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+div#Relatorio h1{
+    list-style: lower-greek;
+    text-align: center;
+    padding: 10px;
+    background-image: linear-gradient(#909cbd, white);
+}
+p.pCampo {
+    font-weight: bolder;
+    font-size: 28px;
+}
+.radioDados {
+    padding: 5px;
+    background-image: linear-gradient(#a2b3d8, white);
+    margin: 10px 0 10px 12px;
+}
+.radioFiltro {
+    padding: 5px;
+    background-image: linear-gradient(#a2b3d8, white);
+    margin: 10px 0 10px 12px;
+}
+input.cond {
+    padding: 5px;
+    margin: 10px;
+    font-size: 17px;
+}
+input.gerarRel {
+    position: absolute;
+    background-color: #1e4096;
+    padding: 25px;
+    font-size: 30px;
+    margin: 43px 34px;
+    color: white;
+    font-weight: bold;
+}
+img.load {
+    width: 281px;
+    float: right;
+}
+img.close {
+    position: absolute;
+    right: 10px;
+    top: 13px;
+}
