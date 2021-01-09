@@ -42,8 +42,17 @@ if (isset($_POST['cnome']) || isset($_POST['cod'])){
 
 </head>
 <body>
+<header>
+    <p>
+    <a>Cadastros</a>
+    <a>Relatorios</a>
+    <a>Configurações</a>
+    </p>
+</header>
+<div class="header2">
+    <input src="img/icone-profissionais.png" type="image" value="" class="cons hidden" onclick="mostrar()">
+</div>
 
-<input type="button" value="" class="cons hidden" onclick="mostrar()">
 <form method="post" action="" name="form" id="formu">
     <div id="cons">
 
