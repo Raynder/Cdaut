@@ -148,6 +148,59 @@ header a {
     width: 70px;
     box-shadow: 1px 1px 0px black;
 }
+.btnGerar {
+    margin-left: 0px;
+    background-color: #019CE5;
+    color: #fff;
+    transform: translateX(-50%);
+    background-color: #019CE5;
+    color: #fff;
+    margin-left: 50%;
+    position: relative;
+    padding: 7px;
+    border-radius: 20px;
+    top: 13px;
+}
+#ui-id-1 {
+    width: 380px;
+    border-color: gray;
+}
+.complet{
+    display: none;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.gerar{
+    box-shadow: 1px 1px 0px black;
+    position: relative;
+    left: 185px;
+}
+.gerarinp {
+    font-size: 2px;
+    text-align: center;
+    font-family: fangsong;
+    border-radius: 20px;
+    border-width: 0.01px;
+    outline: none;
+    margin-top: 4px;
+}
+.tnGerar {
+    transform: translateX(-50%);
+    background-color: #019CE5;
+    color: #fff;
+    margin-left: 50%;
+    position: relative;
+    padding: 7px;
+    border-radius: 20px;
+    }
+.teste {
+    border-radius: 30px;
+    background-color: #d5e2f0;
+}
+/*Style da barra de tarefas*/
+/*Relatorios*/
 div#Relatorio {
     display: block;
     width: 500px;
